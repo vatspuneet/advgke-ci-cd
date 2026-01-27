@@ -17,8 +17,8 @@ steps:
   - --cluster=${_CLUSTER}
 
 substitutions:
-  _ZONE: us-central1-a
-  _CLUSTER: my-gke-cluster
+  _ZONE: us-central1
+  _CLUSTER: autopilot-cluster-1
 
 images:
 - 'gcr.io/$PROJECT_ID/flask-app:$SHORT_SHA'
