@@ -1,18 +1,13 @@
 steps:
-# Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/flask-app/flask-app:$SHORT_SHA', '.']
-
-# Push the container image to Artifact Registry
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/flask-app/flask-app:latest', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/flask-app/flask-app:$SHORT_SHA']
-
-# Deploy to GKE
+  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/flask-app/flask-app:latest']
 - name: 'gcr.io/cloud-builders/gke-deploy'
   args:
   - run
   - --filename=k8s-deployment.yaml
-  - --image=us-central1-docker.pkg.dev/$PROJECT_ID/flask-app/flask-app:$SHORT_SHA
+  - --image=us-central1-docker.pkg.dev/$PROJECT_ID/flask-app/flask-app:latest
   - --location=${_ZONE}
   - --cluster=${_CLUSTER}
 
@@ -24,4 +19,4 @@ substitutions:
   _CLUSTER: autopilot-cluster-1
 
 images:
-- 'us-central1-docker.pkg.dev/$PROJECT_ID/flask-app/flask-app:$SHORT_SHA'
+- 'us-central1-docker.pkg.dev/$PROJECT_ID/flask-app/flask-app:latest'

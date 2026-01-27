@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: nginx:latest
+        image: us-central1-docker.pkg.dev/project-b11cc146-4640-4454-ad5/flask-app/flask-app:latest
         ports:
         - containerPort: 80
 ---
