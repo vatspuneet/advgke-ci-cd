@@ -16,6 +16,9 @@ steps:
   - --location=${_ZONE}
   - --cluster=${_CLUSTER}
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 substitutions:
   _ZONE: us-central1
   _CLUSTER: autopilot-cluster-1
